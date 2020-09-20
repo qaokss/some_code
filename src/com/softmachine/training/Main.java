@@ -6,12 +6,18 @@ import java.util.Map;
 public class Main {
 
     public static void main(String[] args) {
+        String filePath = Reader.readConsoleFilePath();
+        String text = Reader.readFile(filePath);
 
-        String text = Reader.readFile("D:\\Downloads\\new 1.txt");
-        List<String> words = Parser.parse(text);
-        List<String> sortedWords = Parser.sort(words);
-        Map<String, Long> countedWords = Parser.counter(sortedWords);
-        Parser.getMaxUsedWords(countedWords);
+        if (text != null) {
+            List<String> words = Parser.parse(text);
+
+            if (words != null) {
+                Map<String, Long> countedWords = Parser.counter(words);
+                Parser.getMaxUsedWords(countedWords);
+
+            } else System.out.println("Your text is empty, try again");
+        }
     }
 
 
