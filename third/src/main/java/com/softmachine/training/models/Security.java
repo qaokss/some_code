@@ -3,6 +3,7 @@ package com.softmachine.training.models;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.time.LocalDate;
 import java.util.Objects;
 
 public class Security {
@@ -16,7 +17,7 @@ public class Security {
     @SerializedName("cfi")
     private String cfi;
     @SerializedName("date_to")
-    private String dateTo;
+    private LocalDate dateTo;
     @SerializedName("state_reg_date")
     private String stateRegDate;
     @SerializedName("state")
@@ -57,12 +58,12 @@ public class Security {
         this.cfi = cfi;
     }
 
-    public String getDateTo() {
-        return dateTo;
+    public void setDateTo(LocalDate dateTo) {
+        this.dateTo = dateTo;
     }
 
-    public void setDateTo(String dateTo) {
-        this.dateTo = dateTo;
+    public LocalDate getDateTo() {
+        return dateTo;
     }
 
     public String getStateRegDate() {
@@ -107,19 +108,30 @@ public class Security {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
+
         Security security = (Security) o;
-        return Objects.equals(id, security.id) &&
-                Objects.equals(code, security.code) &&
-                Objects.equals(nameFull, security.nameFull) &&
-                Objects.equals(cfi, security.cfi) &&
-                Objects.equals(dateTo, security.dateTo) &&
-                Objects.equals(stateRegDate, security.stateRegDate) &&
-                Objects.equals(state, security.state) &&
-                Objects.equals(currency, security.currency);
+
+        if (id != null ? !id.equals(security.id) : security.id != null) return false;
+        if (code != null ? !code.equals(security.code) : security.code != null) return false;
+        if (nameFull != null ? !nameFull.equals(security.nameFull) : security.nameFull != null) return false;
+        if (cfi != null ? !cfi.equals(security.cfi) : security.cfi != null) return false;
+        if (dateTo != null ? !dateTo.equals(security.dateTo) : security.dateTo != null) return false;
+        if (stateRegDate != null ? !stateRegDate.equals(security.stateRegDate) : security.stateRegDate != null)
+            return false;
+        if (state != null ? !state.equals(security.state) : security.state != null) return false;
+        return currency != null ? currency.equals(security.currency) : security.currency == null;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, code, nameFull, cfi, dateTo, stateRegDate, state, currency);
+        int result = id != null ? id.hashCode() : 0;
+        result = 31 * result + (code != null ? code.hashCode() : 0);
+        result = 31 * result + (nameFull != null ? nameFull.hashCode() : 0);
+        result = 31 * result + (cfi != null ? cfi.hashCode() : 0);
+        result = 31 * result + (dateTo != null ? dateTo.hashCode() : 0);
+        result = 31 * result + (stateRegDate != null ? stateRegDate.hashCode() : 0);
+        result = 31 * result + (state != null ? state.hashCode() : 0);
+        result = 31 * result + (currency != null ? currency.hashCode() : 0);
+        return result;
     }
 }

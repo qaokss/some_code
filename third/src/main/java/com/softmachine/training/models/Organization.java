@@ -39,7 +39,7 @@ public class Organization {
     @SerializedName("is_resident")
     private Boolean isResident;
     @SerializedName("securities")
-    private List<Security> securities = new ArrayList<Security>();
+    private List<Security> securities = new ArrayList<>();
 
 
     public Long getId() {
