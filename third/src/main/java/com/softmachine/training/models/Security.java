@@ -19,7 +19,7 @@ public class Security {
     @SerializedName("date_to")
     private LocalDate dateTo;
     @SerializedName("state_reg_date")
-    private String stateRegDate;
+    private LocalDate stateRegDate;
     @SerializedName("state")
     private State state;
     @SerializedName("currency")
@@ -66,11 +66,11 @@ public class Security {
         return dateTo;
     }
 
-    public String getStateRegDate() {
+    public LocalDate getStateRegDate() {
         return stateRegDate;
     }
 
-    public void setStateRegDate(String stateRegDate) {
+    public void setStateRegDate(LocalDate stateRegDate) {
         this.stateRegDate = stateRegDate;
     }
 
@@ -103,7 +103,6 @@ public class Security {
                 ", currency=" + currency +
                 '}';
     }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

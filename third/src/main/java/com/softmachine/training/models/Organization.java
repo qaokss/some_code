@@ -3,6 +3,7 @@ package com.softmachine.training.models;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -22,8 +23,9 @@ public class Organization {
     private CompanyType companyType;
     @SerializedName("ogrn")
     private String ogrn;
+
     @SerializedName("egrul_date")
-    private String egrulDate;
+    private LocalDate egrulDate;
     @SerializedName("country")
     private Country country;
     @SerializedName("fio_head")
@@ -98,11 +100,11 @@ public class Organization {
         this.ogrn = ogrn;
     }
 
-    public String getEgrulDate() {
+    public LocalDate getEgrulDate() {
         return egrulDate;
     }
 
-    public void setEgrulDate(String egrulDate) {
+    public void setEgrulDate(LocalDate egrulDate) {
         this.egrulDate = egrulDate;
     }
 
@@ -196,27 +198,47 @@ public class Organization {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Organization organization = (Organization) o;
-        return Objects.equals(id, organization.id) &&
-                Objects.equals(code, organization.code) &&
-                Objects.equals(nameFull, organization.nameFull) &&
-                Objects.equals(nameShort, organization.nameShort) &&
-                Objects.equals(inn, organization.inn) &&
-                Objects.equals(companyType, organization.companyType) &&
-                Objects.equals(ogrn, organization.ogrn) &&
-                Objects.equals(egrulDate, organization.egrulDate) &&
-                Objects.equals(country, organization.country) &&
-                Objects.equals(fioHead, organization.fioHead) &&
-                Objects.equals(address, organization.address) &&
-                Objects.equals(phone, organization.phone) &&
-                Objects.equals(eMail, organization.eMail) &&
-                Objects.equals(www, organization.www) &&
-                Objects.equals(isResident, organization.isResident) &&
-                Objects.equals(securities, organization.securities);
+
+        Organization that = (Organization) o;
+
+        if (id != null ? !id.equals(that.id) : that.id != null) return false;
+        if (code != null ? !code.equals(that.code) : that.code != null) return false;
+        if (nameFull != null ? !nameFull.equals(that.nameFull) : that.nameFull != null) return false;
+        if (nameShort != null ? !nameShort.equals(that.nameShort) : that.nameShort != null) return false;
+        if (inn != null ? !inn.equals(that.inn) : that.inn != null) return false;
+        if (companyType != null ? !companyType.equals(that.companyType) : that.companyType != null) return false;
+        if (ogrn != null ? !ogrn.equals(that.ogrn) : that.ogrn != null) return false;
+        if (egrulDate != null ? !egrulDate.equals(that.egrulDate) : that.egrulDate != null) return false;
+        if (country != null ? !country.equals(that.country) : that.country != null) return false;
+        if (fioHead != null ? !fioHead.equals(that.fioHead) : that.fioHead != null) return false;
+        if (address != null ? !address.equals(that.address) : that.address != null) return false;
+        if (phone != null ? !phone.equals(that.phone) : that.phone != null) return false;
+        if (eMail != null ? !eMail.equals(that.eMail) : that.eMail != null) return false;
+        if (www != null ? !www.equals(that.www) : that.www != null) return false;
+        if (isResident != null ? !isResident.equals(that.isResident) : that.isResident != null) return false;
+        return securities != null ? securities.equals(that.securities) : that.securities == null;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, code, nameFull, nameShort, inn, companyType, ogrn, egrulDate, country, fioHead, address, phone, eMail, www, isResident, securities);
+        int result = id != null ? id.hashCode() : 0;
+        result = 31 * result + (code != null ? code.hashCode() : 0);
+        result = 31 * result + (nameFull != null ? nameFull.hashCode() : 0);
+        result = 31 * result + (nameShort != null ? nameShort.hashCode() : 0);
+        result = 31 * result + (inn != null ? inn.hashCode() : 0);
+        result = 31 * result + (companyType != null ? companyType.hashCode() : 0);
+        result = 31 * result + (ogrn != null ? ogrn.hashCode() : 0);
+        result = 31 * result + (egrulDate != null ? egrulDate.hashCode() : 0);
+        result = 31 * result + (country != null ? country.hashCode() : 0);
+        result = 31 * result + (fioHead != null ? fioHead.hashCode() : 0);
+        result = 31 * result + (address != null ? address.hashCode() : 0);
+        result = 31 * result + (phone != null ? phone.hashCode() : 0);
+        result = 31 * result + (eMail != null ? eMail.hashCode() : 0);
+        result = 31 * result + (www != null ? www.hashCode() : 0);
+        result = 31 * result + (isResident != null ? isResident.hashCode() : 0);
+        result = 31 * result + (securities != null ? securities.hashCode() : 0);
+        return result;
     }
+
+
 }

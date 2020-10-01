@@ -15,10 +15,6 @@ public class Main {
     public static void main(String[] args) throws IOException {
         List<Organization> organizations = Mapper.file();
         Representer.getAllOrganizations(organizations);
-
-        List<Security> securities = new ArrayList<>();
-        organizations.stream().map(Organization::getSecurities).forEach(securities::addAll);
-
-        Representer.getExpiredSecurities(securities);
+        Representer.getExpiredSecurities(organizations);
     }
 }
