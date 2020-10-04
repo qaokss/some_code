@@ -20,6 +20,7 @@ public class Representer {
      * @throws UnsupportedEncodingException
      */
     public static void getAllOrganizations(List<Organization> organizations) throws UnsupportedEncodingException {
+        System.out.println("---------------------------------------------------------------");
         System.out.println("There are all organizations: ");
         organizations.stream().map(organization -> organization.getNameShort() + " - "
                 + organization.getEgrulDate().format(DateTimeFormatter.ofPattern("dd/MM/yy")))
@@ -39,10 +40,17 @@ public class Representer {
                 .filter(s -> s.getDateTo().isBefore(LocalDate.now()))
                 .forEach(security -> securityMap.put(o.getNameFull(), security)));
 
+        System.out.println("---------------------------------------------------------------");
         System.out.println("\nThere are " + securityMap.size() + " overdue securities on the current day: ");
 
         securityMap.forEach((key, value) -> System.out.println
                 (value.getCode() + " - " + value.getDateTo() + " - " + key));
+    }
+
+    public static void getOrganizationsFoundedFromDate(LocalDate creationDate, List<Organization> organizations) {
+        organizations.stream().filter(o ->  o.getEgrulDate().isAfter(creationDate)).
+                forEach(organization -> System.out.println(organization.getNameShort() +
+                        " - " + organization.getEgrulDate()));
 
 
     }
