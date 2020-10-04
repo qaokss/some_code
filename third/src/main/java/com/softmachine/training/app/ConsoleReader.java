@@ -12,7 +12,7 @@ import java.time.temporal.ChronoField;
 public class ConsoleReader {
 
     /**
-     * Read user input to console and return
+     * Read user input to console date and return
      *
      * @return File path from user enter to console
      */
@@ -41,8 +41,34 @@ public class ConsoleReader {
     }
 
     /**
+     * Read user input to console currency and return
+     *
+     * @return File path from user enter to console
+     */
+    public static String readFromConsoleCurrencyCode() throws IOException {
+        String currencyCode = null;
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+
+        //waiting while user enter date in correct format
+        while (currencyCode == null || currencyCode.equals("")) {
+            System.out.println("---------------------------------------------------------------");
+            System.out.println("Please write currency code to see securities with it:");
+            System.out.println("Examples: EU, USD, RUB");
+
+            try {
+                currencyCode = reader.readLine();
+            } catch (IOException e) {
+                System.out.println("Error while reading input from console");
+            }
+        }
+
+        return currencyCode;
+    }
+
+    /**
      * method checks whether the entered date is correct
      * and returns it in LocalDate type if the date can be parsed
+     *
      * @param inputDate
      * @return LocalDate (if the date can be parsed) or null with error message
      */

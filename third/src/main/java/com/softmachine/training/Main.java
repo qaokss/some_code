@@ -15,10 +15,21 @@ import java.util.List;
 public class Main {
 
     public static void main(String[] args) throws IOException {
+        // read file
         List<Organization> organizations = Mapper.file();
+
+        // output organizations
         Representer.getAllOrganizations(organizations);
+
+        // output expired securities
         Representer.getExpiredSecurities(organizations);
+
+        // output organizations with Foundation Date after user's input
         LocalDate date = ConsoleReader.readConsoleCreationDate();
         Representer.getOrganizationsFoundedFromDate(date, organizations);
+
+        // output securities with currency from user's input
+        String currency = ConsoleReader.readFromConsoleCurrencyCode();
+        Representer.getSecuritiesWithSpecifiedCurrency(organizations, currency);
     }
 }
