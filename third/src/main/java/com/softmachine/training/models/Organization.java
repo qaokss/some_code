@@ -23,7 +23,6 @@ public class Organization {
     private CompanyType companyType;
     @SerializedName("ogrn")
     private String ogrn;
-
     @SerializedName("egrul_date")
     private LocalDate egrulDate;
     @SerializedName("country")
