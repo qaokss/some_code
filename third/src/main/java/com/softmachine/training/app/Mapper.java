@@ -15,8 +15,7 @@ import java.util.List;
 
 public  class Mapper {
 
-    public static List<Organization> file() throws IOException {
-        String path = "D:\\java\\some_code\\third\\src\\main\\resources\\test.json";
+    public static List<Organization> file(String filepath) throws IOException {
 
         // need for deserialize String value to LocalDate value
         Gson gson = new GsonBuilder().registerTypeAdapter(LocalDate.class,
@@ -26,7 +25,7 @@ public  class Mapper {
         // need for crete List of Objects
         Type organizationType = new TypeToken<ArrayList<Organization>>(){}.getType();
 
-        return gson.fromJson(new FileReader(path, StandardCharsets.UTF_8), organizationType);
+        return gson.fromJson(new FileReader(filepath, StandardCharsets.UTF_8), organizationType);
     }
 
 }
